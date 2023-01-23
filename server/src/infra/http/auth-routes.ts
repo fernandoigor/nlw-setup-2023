@@ -66,28 +66,9 @@ export async function authRoutes(app: FastifyInstance) {
       code: z.string(),
     });
     const { code } = createUserBody.parse(request.body);
-
-    console.log(code);
-
-    // const emailAlreadyExists = await findUserByEmail(email);
-    // console.log(emailAlreadyExists);
-    // if (emailAlreadyExists) {
-    //   response.status(409).send({ message: "Email already exists." });
-    //   return;
-    // }
-    // const user = await createUserByEmailAndPassword({
-    //   username,
-    //   email,
-    //   password,
-    // });
-
     const CLIENT_ID = process.env.CLIENT_ID;
     const CLIENT_SECRET = process.env.CLIENT_SECRET;
     const REDIRECT_URI = process.env.REDIRECT_URI;
-    const SCOPE = "identity";
-    console.log(
-      `https://github.com/login/oauth/access_token?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&code=${code}&redirect_uri=${REDIRECT_URI}`
-    );
 
     const getToken = await axios.get(
       `https://github.com/login/oauth/access_token?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&code=${code}&redirect_uri=${REDIRECT_URI}`,
@@ -99,9 +80,6 @@ export async function authRoutes(app: FastifyInstance) {
     );
 
     const token = getToken.data.split("&scope")[0].split("access_token=")[1];
-    // const test = await fetch(
-    //   `https://github.com/login/oauth/access_token?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&code=${params.code}&redirect_uri=${REDIRECT_URI}`
-    // );
 
     console.log(`Bearer ${token}`);
     try {
