@@ -5,6 +5,8 @@ import {
   CompletedHabits,
   createHabit,
   PossibleHabits,
+  TotalHabits,
+  TotalHabitsCompleted,
 } from "../../application/habit/habit-services";
 import { prisma } from "../../lib/prisma";
 
@@ -168,6 +170,24 @@ export async function appRoutes(app: FastifyInstance) {
       // AND H.created_at <= D.date
 
       return summary;
+    }
+  );
+
+  app.get(
+    "/habits/me",
+    {
+      onRequest: [app.authenticate],
+    },
+    async (request) => {
+      const userId = request.headers.userId as string;
+
+      const habits = await TotalHabits(userId);
+      const { totalHabit } = habits[0];
+      const habitsCompleted = await TotalHabitsCompleted(userId);
+      const { totalCompleted } = habitsCompleted[0];
+      console.log("1", totalHabit);
+      console.log("2", totalCompleted);
+      return { totalHabit, totalCompleted };
     }
   );
 }

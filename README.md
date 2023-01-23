@@ -27,10 +27,7 @@
 
 ### [Preview Mobile]
 
-<img src="https://raw.githubusercontent.com/fernandoigor/nlw-setup-2023/main/assets/1-loading.png" alt="loading" width="140"/>
-<img src="https://raw.githubusercontent.com/fernandoigor/nlw-setup-2023/main/assets/2-login.png" alt="login" width="140"/>
-<img src="https://raw.githubusercontent.com/fernandoigor/nlw-setup-2023/main/assets/3-register.png" alt="register" width="140"/>
-<img src="https://raw.githubusercontent.com/fernandoigor/nlw-setup-2023/main/assets/4-home.png" alt="home" width="140"/>
+<img src="https://raw.githubusercontent.com/fernandoigor/nlw-setup-2023/main/assets/1-loading.png" alt="loading" width="140"/><img src="https://raw.githubusercontent.com/fernandoigor/nlw-setup-2023/main/assets/2-login.png" alt="login" width="140"/><img src="https://raw.githubusercontent.com/fernandoigor/nlw-setup-2023/main/assets/3-register.png" alt="register" width="140"/><img src="https://raw.githubusercontent.com/fernandoigor/nlw-setup-2023/main/assets/4-home.png" alt="home" width="140"/><img src="https://raw.githubusercontent.com/fernandoigor/nlw-setup-2023/main/assets/5-profile.png" alt="home" width="140"/>
 
 ## Instalação
 

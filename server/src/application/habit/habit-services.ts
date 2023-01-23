@@ -54,3 +54,23 @@ export async function CompletedHabits({ parsedDate }) {
     }) ?? []
   );
 }
+
+export async function TotalHabits(userId: string) {
+  return await prisma.$queryRaw`
+                SELECT 
+            cast(count(*) as float) totalHabit
+          FROM day_habits DH
+          JOIN habits H ON (DH.habit_id = H.id)
+          WHERE H.user_id = ${userId}
+    `;
+}
+export async function TotalHabitsCompleted(userId: string) {
+  return await prisma.$queryRaw`
+          SELECT
+            cast(count(*) as float) totalCompleted
+          FROM habit_week_days HDW
+          JOIN habits H
+            ON (H.id = HDW.habit_id )
+          WHERE H.user_id = ${userId}
+    `;
+}

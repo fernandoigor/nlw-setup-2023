@@ -19,7 +19,12 @@ export function Header() {
   return (
     <View className="w-full flex-col items-center justify-between">
       <View className="flex-row w-full items-center justify-between mb-4">
-        <View className="flex-row items-center gap-4">
+        <TouchableOpacity
+          className="flex-row items-center gap-4"
+          onPress={() => {
+            navigate("profile");
+          }}
+        >
           <View className="border-2 border-violet-500 rounded-full">
             <Image
               className="bg-red-500 w-12 h-12 rounded-full mx-0 m-1"
@@ -31,7 +36,7 @@ export function Header() {
           <Text className="text-white text-xl ml-0">
             Olá, {authContext?.user?.username}
           </Text>
-        </View>
+        </TouchableOpacity>
         <TouchableOpacity activeOpacity={0.7} onPress={handleLogout}>
           <Feather name="log-out" color={colors.white} size={20} />
         </TouchableOpacity>
