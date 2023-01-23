@@ -24,14 +24,10 @@ export const authGitHub = async () => {
 
   const authUrl = `https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&scope=${SCOPE}`;
 
-  // console.log(authURL);
   const { type, params } = (await AuthSession.startAsync({
     authUrl,
   })) as AuthResponseGithub;
   if (type === "success") {
-    console.log(params);
     return await api.post("/auth/github", { code: params.code });
-  } else {
-    console.log(params);
   }
 };

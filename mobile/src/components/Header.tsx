@@ -15,7 +15,7 @@ export function Header() {
   const handleLogout = () => {
     authContext.logout();
   };
-  console.log(authContext?.user?.avatar);
+
   return (
     <View className="w-full flex-col items-center justify-between">
       <View className="flex-row w-full items-center justify-between mb-4">

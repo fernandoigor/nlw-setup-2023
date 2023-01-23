@@ -50,7 +50,6 @@ export function Login() {
     try {
       await authContext.login(userData);
     } catch (error: AxiosError) {
-      console.log(error);
       if (error?.response?.status === 400) {
         Alert.alert("Ops", "Servidor fora do ar");
       } else if (error?.response?.status === 403) {

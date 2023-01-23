@@ -1,5 +1,4 @@
 import "./src/lib/dayjs";
-import * as dotenv from "dotenv";
 
 import { StatusBar } from "react-native";
 import { AuthContextProvider } from "./src/contexts/AuthContext";

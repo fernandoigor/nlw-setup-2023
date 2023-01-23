@@ -68,7 +68,6 @@ export function New() {
 
       Alert.alert("Novo hábito", "Hábito criado com sucesso!");
     } catch (error) {
-      console.log(error);
       Alert.alert("Ops", "Não foi possível criar o novo hábito");
     }
   }

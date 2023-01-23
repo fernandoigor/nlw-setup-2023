@@ -59,7 +59,6 @@ export function Habit() {
       setDayInfo(response.data);
       setCompletedHabits(response.data.completedHabits ?? []);
     } catch (error) {
-      console.log(error);
       Alert.alert(
         "Ops",
         "Não foi possível carregar as informações dos hábitos."
@@ -81,15 +80,6 @@ export function Habit() {
         }
       );
 
-      // axios
-      //   .request(options)
-      //   .then(function (response) {
-      //     console.log(response.data);
-      //   })
-      //   .catch(function (error) {
-      //     console.error(error);
-      //   });
-
       if (completedHabits?.includes(habitId)) {
         setCompletedHabits((prevState) =>
           prevState.filter((habit) => habit !== habitId)
@@ -98,7 +88,6 @@ export function Habit() {
         setCompletedHabits((prevState) => [...prevState, habitId]);
       }
     } catch (error) {
-      console.log(error.response.data);
       Alert.alert("Ops", "Não foi possível atualizar o status do hábito.");
     }
   }

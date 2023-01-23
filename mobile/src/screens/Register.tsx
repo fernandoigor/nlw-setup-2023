@@ -31,18 +31,17 @@ export function Register() {
   };
 
   const handleRegister = async () => {
-    console.log("touch register tela registrar");
-    console.log(registerData);
-    // if (registerData.password !== registerData.passwordRepeat) {
-    //   Alert.alert("Ops", "Senhas diferentes");
-    //   return;
-    // }
+    if (registerData.password !== registerData.passwordRepeat) {
+      Alert.alert("Ops", "Senhas diferentes");
+      return;
+    }
     setLoading(true, "Registrando...");
     try {
+      const { email, password, username } = registerData;
       await RegisterUser({
-        email: "Rocket@email.com",
-        password: "12345678",
-        username: "RocketSeat",
+        email,
+        password,
+        username,
       });
       Alert.alert("Registrado", "Faça login utilizando email e senha");
       navigate("login");
@@ -52,7 +51,6 @@ export function Register() {
       } else {
         Alert.alert("Ops", "Não foi possível registrar");
       }
-      console.log(err.response?.status);
     } finally {
       setLoading(false);
     }

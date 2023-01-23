@@ -58,7 +58,6 @@ export function AuthContextProvider({ children }: AuthProviderProps) {
 
     if (responseLogin) {
       const { id, token, username } = responseLogin.data;
-      console.log("LOGIN", id, token, username);
       setData((prev) => ({
         userId: id,
         username,
@@ -73,7 +72,6 @@ export function AuthContextProvider({ children }: AuthProviderProps) {
   const loginGitHub = async () => {
     try {
       const responseAuth = await authGitHub();
-      console.log(responseAuth.data);
       const { id, username, token, avatar } = responseAuth.data;
 
       setData({
@@ -118,6 +116,5 @@ export function AuthContextProvider({ children }: AuthProviderProps) {
 }
 
 export async function Register({ username, email, password }) {
-  console.log({ username, email, password });
   return await api.post("/auth/register", { username, email, password });
 }
