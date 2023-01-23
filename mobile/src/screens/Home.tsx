@@ -84,20 +84,15 @@ export function Home() {
               });
 
               return (
-                <>
-                  {date.getDate() === 1 && (
-                    <View className="bg-red-400 mt-2 w-full"></View>
-                  )}
-                  <HabitDay
-                    key={date.toISOString()}
-                    date={date}
-                    amountOfHabits={dayWithHabits?.amount}
-                    amountCompleted={dayWithHabits?.completed}
-                    onPress={() =>
-                      navigate("habit", { date: date.toISOString() })
-                    }
-                  />
-                </>
+                <HabitDay
+                  key={date.toISOString()}
+                  date={date}
+                  amountOfHabits={dayWithHabits?.amount}
+                  amountCompleted={dayWithHabits?.completed}
+                  onPress={() =>
+                    navigate("habit", { date: date.toISOString() })
+                  }
+                />
               );
             })}
 
@@ -118,7 +113,7 @@ export function Home() {
                   <>
                     {dateOfMonth === 1 && boxCompleteEndMonth}
                     <View
-                      key={index}
+                      key={`completedBox_${index}`}
                       className="bg-zinc-900 rounded-lg border-2 m-1 border-zinc-800 opacity-40"
                       style={{ width: DAY_SIZE, height: DAY_SIZE }}
                     />
