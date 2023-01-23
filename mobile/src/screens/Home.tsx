@@ -41,7 +41,6 @@ export function Home() {
       setSummary(response.data);
     } catch (error) {
       Alert.alert("Ops", "Não foi possível carregar o sumário de hábitos.");
-      console.log(error);
     } finally {
       setLoading(false);
     }
@@ -85,26 +84,47 @@ export function Home() {
               });
 
               return (
-                <HabitDay
-                  key={date.toISOString()}
-                  date={date}
-                  amountOfHabits={dayWithHabits?.amount}
-                  amountCompleted={dayWithHabits?.completed}
-                  onPress={() =>
-                    navigate("habit", { date: date.toISOString() })
-                  }
-                />
+                <>
+                  {date.getDate() === 1 && (
+                    <View className="bg-red-400 mt-2 w-full"></View>
+                  )}
+                  <HabitDay
+                    key={date.toISOString()}
+                    date={date}
+                    amountOfHabits={dayWithHabits?.amount}
+                    amountCompleted={dayWithHabits?.completed}
+                    onPress={() =>
+                      navigate("habit", { date: date.toISOString() })
+                    }
+                  />
+                </>
               );
             })}
 
             {amountOfDaysToFill > 0 &&
-              Array.from({ length: amountOfDaysToFill }).map((_, index) => (
-                <View
-                  key={index}
-                  className="bg-zinc-900 rounded-lg border-2 m-1 border-zinc-800 opacity-40"
-                  style={{ width: DAY_SIZE, height: DAY_SIZE }}
-                />
-              ))}
+              Array.from({ length: amountOfDaysToFill }).map((_, index) => {
+                const dataBox = dayjs().add(index + 1, "day");
+                const dateOfMonth = dataBox.date();
+                const boxCompleteEndMonth = Array.from({ length: 7 }).map(
+                  (_, index) => (
+                    <View
+                      key={`completedEndMonth_${index}`}
+                      className="rounded-lg border-2 m-1 border-zinc-800 opacity-5"
+                      style={{ width: DAY_SIZE, height: DAY_SIZE }}
+                    />
+                  )
+                );
+                return (
+                  <>
+                    {dateOfMonth === 1 && boxCompleteEndMonth}
+                    <View
+                      key={index}
+                      className="bg-zinc-900 rounded-lg border-2 m-1 border-zinc-800 opacity-40"
+                      style={{ width: DAY_SIZE, height: DAY_SIZE }}
+                    />
+                  </>
+                );
+              })}
           </View>
         )}
       </ScrollView>
